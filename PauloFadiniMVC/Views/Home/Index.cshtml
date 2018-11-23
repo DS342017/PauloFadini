@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PauloFadiniMVC.Models.Pedido>
+
+@{
+    ViewBag.Title = "Listagem de Pedidos";
+}
+
+<h2>Listagem de Pedidos</h2>
+
+<p>
+    <a href="@Url.Action("AddOrEdit", "Home", new { id = 0})">Create</a>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nomeMedicamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qtdMedicamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataEntrega)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomeMedicamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.qtdMedicamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dataEntrega)
+        </td>
+        <td>
+            <a href="@Url.Action("AddOrEdit", "Home", new { id = item.idPedido})">Edit</a> |
+            <a href="@Url.Action("Delete", "Home", new { id = item.idPedido})">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>
